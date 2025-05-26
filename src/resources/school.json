@@ -1,0 +1,113 @@
+{
+    "school2": {
+        "rooms": [
+            {
+                "roomnumber": 105,
+                "roomarea": 15
+            },
+            {
+                "roomnumber": 103,
+                "roomarea": 20
+            },
+            {
+                "roomnumber": 1337,
+                "roomarea": 35
+            }
+        ],
+        "teacher": [{
+            "subjets": [
+                "Subject{name='Mathe'}",
+                "Subject{name='Informatik'}"
+            ],
+            "name": "Finn",
+            "age": 18,
+            "lastname": "Laskowski"
+        }],
+        "maxclasscapacity": 30,
+        "classes": [{
+            "studentcapacity": 30,
+            "name": "11D"
+        }],
+        "schoolname": "test5"
+    },
+    "school3": {
+        "maxclasscapacity": 23,
+        "students": [{
+            "favouritesubject": [
+                "Subject{name='none'}",
+                "Subject{name='none'}"
+            ],
+            "name": "patric",
+            "age": 15,
+            "lastname": "klamm"
+        }],
+        "schoolname": "Peter-Henlein-Realschule"
+    },
+    "school0": {
+        "rooms": [
+            {
+                "roomsize": 35.5,
+                "roomnumber": "204",
+                "class": "10A"
+            },
+            {
+                "roomsize": 40,
+                "roomnumber": "101",
+                "class": null
+            }
+        ],
+        "maxclasscapacity": 20,
+        "classes": [
+            {
+                "studentcapacity": 30,
+                "teacher": {
+                    "firstname": "Ned",
+                    "teachingsubjects": [
+                        "Math",
+                        "Physics"
+                    ],
+                    "age": 40,
+                    "lastname": "Flanders"
+                },
+                "name": "10A",
+                "students": [
+                    {
+                        "firstname": "Lisa",
+                        "age": 7,
+                        "lastname": "Simpson",
+                        "favoritesubjects": [
+                            "Math",
+                            "Biology"
+                        ]
+                    },
+                    {
+                        "firstname": "Bart",
+                        "age": 9,
+                        "lastname": "Simpson",
+                        "favoritesubjects": [
+                            "None",
+                            "None"
+                        ]
+                    }
+                ]
+            },
+            {
+                "studentcapacity": 20,
+                "name": "11D"
+            },
+            {
+                "studentcapacity": 30,
+                "name": "5B"
+            }
+        ],
+        "schoolname": "Springfield Elementary School"
+    },
+    "school1": {
+        "rooms": [{
+            "roomnumber": 30,
+            "roomarea": 2
+        }],
+        "maxclasscapacity": 2,
+        "schoolname": "Test3"
+    }
+}
