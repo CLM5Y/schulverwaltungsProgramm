@@ -136,3 +136,103 @@ Zum Schluss wird dann auch der Schüler persistiert mit dem Verweis auf die Klas
 * Erfassung der Lieblingsfächer über eine wiederkehrende Abfrage
   * bis keine weiteren Fächer mehr erfasst werden sollen
 * Persistente Speicherung des Schülers mit Verweis auf die Klasse
+## Stories
+
+### SCHOOL-08 - Raum belegen
+Als Nutzer möchte ich die Möglichkeit haben einen Raum mit einer Klasse zu belegen.
+Der Raum ist dann gesperrt für andere Klassen.
+Dabei soll zuerst der Raum ausgewählt werden, der belegt werden soll. Hier wird dann überprüft ob der Raum noch frei ist.
+Als Nächstes wähle ich dann die Klasse aus, die dem Raum zugewiesen werden soll.
+
+#### Akzeptanzkriterien
+* Belegung eines Raums über Menüpunkt "Belegen eines Raums mit einer Klasse"
+* Auswahl des Raums
+  * Prüfung auf Verfügbarkeit
+* Auswahl der Klasse
+* Persistierung der Verbindung
+
+### SCHOOL-09 - Belegung aufheben
+Als Nutzer möchte ich eine Raumbelegung auch wieder aufheben können.
+Dafür komme ich über den Menüpunkt "Belegung eines Raums aufheben".
+Für das Aufheben der Belegung muss ich lediglich die Raumnummer angeben.
+Das Ergebnis ist, dass der Raum wieder belegt werden kann.
+
+#### Akzeptanzkriterien
+* Aufhebung über Menüpunkt "Belegung eines Raums aufheben"
+* Eingabe der Raumnummer
+* Raum wieder frei für eine Belegung
+
+### SCHOOL-10 - Übersicht über Räume
+Als Nutzer möchte ich eine Übersicht über die Räume der Schule bekommen.
+Die Anzeige möchte ich über den Menüpunkt "Gesamte Raumbelegung ansehen" erhalten.
+Dabei soll mir angezeigt werden, welche Räume es gibt.
+Zusätzlich soll mir angezeigt werden welche Räume gerade frei sind und welche belegt sind.
+Bei belegten Räumen soll dann zusätzlich noch der Klassennamen angezeigt werden
+
+#### Akzeptanzkriterien
+* Anzeige über Menüpunkt "Gesamte Raumbelegung ansehen"
+* Anzeige aller Räume
+* Anzeige ob Raum frei oder belegt ist
+  * Wenn belegt, dann Anzeige der Klasse die den Raum belegt
+
+### SCHOOL-11 - Übersicht über Klassen
+Als Nutzer möchte ich mir einen Überblick über die Klassen machen können.
+Die Anzeige erreiche ich über den Menüpunkt "Alle Klasseninformationen anzeigen"
+Die Anzeige besteht aus allen notwendigen Informationen, darunter zählen der Name der Klasse, sowie die Anzahl der Lehrer.
+Bei der Anzahl der Schüler soll hier die Anzahl im Vergleich zur maximalen Kapazität angezeigt werden.
+
+#### Akzeptanzkriterien
+* Anzeige über den Menüpunkt "Alle Klasseninformationen anzeigen"
+* Alle notwendigen Informationen der Klasse werden angezeigt
+  * Name, Anzahl der Lehrer sowie Anzahl der Schüler im Vergleich zur Kapazität
+
+### SCHOOL-12 - Entfernen eines Schülers aus einer Klasse
+Als Nutzer möchte ich Schüler aus einer Klasse entfernen können, sofern diese nicht mehr Teil der Klasse sind.
+Dabei wird das Entfernen über den Menüpunkt "Entfernen eines Schülers aus der Klasse" eingeleitet.
+Als Nächstes muss dann die Klasse ausgewählt werden, in der der Schüler ist.
+Jetzt muss dann der Schüler gewählt werden, hierzu müssen Name und Vorname eingegeben werden.
+Zum Schluss wird nochmal abgefragt, ob dieser Vorgang wirklich durchgeführt werden soll.
+Bei Bestätigung wird der Schüler aus der Klasse entfernt.
+Bei Verneinung wird der Vorgang abgebrochen.
+
+#### Akzeptanzkriterien
+* Entfernen über Menüpunkt "Entfernen eines Schülers aus der Klasse"
+* Auswahl der Klasse
+* Auswahl des Schülers
+  * Eingabe von Name und Vorname
+* Abfrage, ob Vorgang durchgeführt werden soll
+  * Ja, Schüler wird aus Klasse entfernt
+  * Nein, Vorgang wird abgebrochen
+
+### SCHOOL-13 - Entfernen eines Lehrers aus Klasse
+Als Nutzer möchte ich Lehrer aus einer Klasse entfernen können, sofern diese nicht mehr Teil der Klasse sind.
+Dabei wird das Entfernen über den Menüpunkt "Entfernen eines Lehrer aus der Klasse" eingeleitet.
+Als Nächstes muss dann die Klasse ausgewählt werden, in der der Lehrer ist.
+Jetzt muss dann der Lehrer gewählt werden, hierzu müssen Name und Vorname eingegeben werden.
+Zum Schluss wird nochmal abgefragt, ob dieser Vorgang wirklich durchgeführt werden soll.
+Bei Bestätigung wird der Lehrer aus der Klasse entfernt.
+Bei Verneinung wird der Vorgang abgebrochen.
+
+#### Akzeptanzkriterien
+* Entfernen über Menüpunkt "Entfernen eines Lehrers aus der Klasse"
+* Auswahl der Klasse
+* Auswahl des Lehrers
+  * Eingabe von Name und Vorname
+* Abfrage, ob Vorgang durchgeführt werden soll
+  * Ja, Lehrer wird aus Klasse entfernt
+  * Nein, Vorgang wird abgebrochen
+
+### SCHOOL-14 - Klasse komplett auflösen
+Als Nutzer möchte ich die Möglichkeit haben eine Klasse komplett zu entfernen.
+Dazu wähle ich den Menüpunkt "Klasse komplett löschen".
+Hier muss ich dann die Klasse auswählen, die ich löschen möchten.
+Es soll noch einmal abgefragt werden, ob dieser Vorgang durchgeführt werden soll.
+Bei Bestätigung wird die Klasse gelöscht sowie alle zugehörigen Lehrer und Schüler.
+Bei Verneinung passiert nichts und der Vorgang wird abgebrochen.
+
+#### Akzeptanzkriterien
+* Löschen über Menüpunkt "Klasse komplett löschen"
+* Auswahl der Klasse, die gelöscht werden soll
+* Abfrage ob Löschvorgang durchgeführt werden soll
+  * Ja, Klasse, Lehrer und Schüler werden gelöscht
+  * Nein, Vorgang wird abgebrochen

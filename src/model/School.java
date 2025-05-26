@@ -16,12 +16,6 @@ public class School extends ToJSON {
     private List<Classroom> classrooms;
     private int maxClassCapacity;
 
-    public School(String schoolName, List<SchoolClass> classes, List<Classroom> classrooms, int maxClassCapacity) {
-        this.schoolName = schoolName;
-        this.classes = classes;
-        this.classrooms = classrooms;
-        this.maxClassCapacity = maxClassCapacity;
-    }
     public School(String schoolName, int maxClassCapacity){
         this.schoolName = schoolName;
         this.maxClassCapacity = maxClassCapacity;
@@ -35,16 +29,8 @@ public class School extends ToJSON {
         this.schoolName = schoolName;
     }
 
-    public List<SchoolClass> getClasses() {
-        return classes;
-    }
-
     public void setClasses(List<SchoolClass> classes) {
         this.classes = classes;
-    }
-
-    public List<Classroom> getClassrooms() {
-        return classrooms;
     }
 
     public void setClassrooms(List<Classroom> classrooms) {
