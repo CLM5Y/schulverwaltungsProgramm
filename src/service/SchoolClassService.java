@@ -1,5 +1,6 @@
 package service;
 
+import model.JSONConfig;
 import model.School;
 import model.SchoolClass;
 import org.json.JSONArray;
@@ -40,24 +41,24 @@ public class SchoolClassService {
                 }
             }
             System.out.println("Okay! Ich habe alle benötigten Daten...");
-            Sleep.sleep(1500);
+            Sleep.sleep(500);
             System.out.println("Erstelle Klasse...");
-            Sleep.sleep(1500);
+            Sleep.sleep(500);
             SchoolClass schoolclass = new SchoolClass(name, studentCapacity);
 
             System.out.println("Speichere nun die Klasse...");
             JSONObject school = data.getJSONObject(schoolKey);
 
-            JSONArray klassen = school.optJSONArray("classes");
+            JSONArray klassen = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
             if(klassen == null){
                 klassen = new JSONArray();
-                school.put("classes", klassen);
+                school.put(JSONConfig.JSONKeys.CLASSES.key(), klassen);
             }
             klassen.put(schoolclass.toJSON());
             data.put(schoolKey, school);
 
             service.saveJSON();
-            Sleep.sleep(1500);
+            Sleep.sleep(500);
             System.out.println("Erfolgreich gespeichert!");
             System.out.println("Zum beenden schreiben Sie 'exit', zum Fortfahren drücken Sie bitte ENTER");
             System.out.println("Weitere Klassen erstellen?");
@@ -76,17 +77,17 @@ public class SchoolClassService {
             return null;
         }
 
-        JSONArray classesArray = school.optJSONArray("classes");
+        JSONArray classesArray = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
         if (classesArray == null || classesArray.isEmpty()) {
             System.out.println("Diese Schule hat noch keine Klassen.");
             return null;
         }
 
-        System.out.println("Folgende Klassen sind an der Schule '" + school.optString("schoolname") + "' verfügbar:");
+        System.out.println("Folgende Klassen sind an der Schule '" + school.optString(JSONConfig.JSONKeys.SCHOOLNAME.key()) + "' verfügbar:");
 
         for (int i = 0; i < classesArray.length(); i++) {
             JSONObject classObj = classesArray.getJSONObject(i);
-            String className = classObj.optString("name");
+            String className = classObj.optString(JSONConfig.JSONKeys.NAME.key());
             if (className != null && !className.isEmpty()) {
                 System.out.println(className);
                 classNames.add(className);
@@ -101,7 +102,7 @@ public class SchoolClassService {
 
             for (int i = 0; i < classesArray.length(); i++) {
                 JSONObject classObj = classesArray.getJSONObject(i);
-                if (wantedClass.equalsIgnoreCase(classObj.optString("name"))) {
+                if (wantedClass.equalsIgnoreCase(classObj.optString(JSONConfig.JSONKeys.NAME.key()))) {
                     System.out.println("Gut, " + wantedClass + " also!");
                     return wantedClass;
                 }

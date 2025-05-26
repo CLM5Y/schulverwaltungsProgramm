@@ -1,6 +1,7 @@
 package service;
 
 import model.Classroom;
+import model.JSONConfig;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,26 +48,26 @@ public class ClassroomService {
             }
 
             System.out.println("Okay! Ich habe alle benötigten Daten...");
-            Sleep.sleep(1500);
+            Sleep.sleep(500);
             System.out.println("Erstelle Klassenzimmer...");
-            Sleep.sleep(1500);
+            Sleep.sleep(500);
 
             Classroom classroom = new Classroom(raumnummer, roomArea);
 
             System.out.println("Speichere nun das Klassenzimmer...");
             JSONObject school = data.getJSONObject(schoolKey);
 
-            JSONArray rooms = school.optJSONArray("rooms");
+            JSONArray rooms = school.optJSONArray(JSONConfig.JSONKeys.ROOMS.key());
             if (rooms == null) {
                 rooms = new JSONArray();
-                school.put("rooms", rooms);
+                school.put(JSONConfig.JSONKeys.ROOMS.key(), rooms);
             }
 
             rooms.put(classroom.toJSON());
             data.put(schoolKey, school);
 
             service.saveJSON();
-            Sleep.sleep(1500);
+            Sleep.sleep(500);
             System.out.println("Erfolgreich gespeichert!");
             System.out.println("Zum Beenden schreiben Sie 'exit', zum Fortfahren drücken sie einfach Enter.");
             System.out.println("Weitere Klassenräume erstellen?");

@@ -6,8 +6,8 @@ Das Menü soll folgende Menüpunkte haben:
 * Schule erstellen (1) -DONE
 * Klassenzimmer erstellen (2) -DONE
 * Klasse erstellen (3) -DONE
-* Lehrer zu einer Klasse hinzufügen (4)
-* Schüler zu einer Klasse hinzufügen (5)
+* Lehrer zu einer Klasse hinzufügen (4) -DONE
+* Schüler zu einer Klasse hinzufügen (5) -DONE
 * Belegen eines Raums mit einer Klasse (6)
 * Belegung eines Raumes aufheben (7)
 * Gesamte Raumbelegung ausgeben (8)
@@ -121,7 +121,7 @@ Dazu gehört auch, dass die Lehrkraft persistiert wird mit einem Verweis auf die
   * Fächer werden so lange erfasst bis keines mehr zu erfassen ist (Abfrage nach jeder Eingabe)
 * Persistierung der Lehrkraft mit Verweis auf die zugehörige Klasse
 
-### SCHOOL-07 - Schüler zu einer Klasse hinzufügen
+### SCHOOL-07 - Schüler zu einer Klasse hinzufügen -DONE
 Als Nutzer möchte ich für eine Klasse einen Schüler hinzufügen können.
 Die Erfassung wird über den Menüpunkt "Schüler zu einer Klasse hinzufügen" eingeleitet.
 Zuerst muss die Klasse gewählt werden, in die der Schüler kommen soll, dass geschieht über den Namen der Klasse.

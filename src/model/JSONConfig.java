@@ -24,4 +24,24 @@ public class JSONConfig {
         return JSON_FILE_PATH;
     }
 
+    public enum JSONKeys {
+        ROOMS("rooms"),
+        TEACHER("teacher"),
+        CLASSES("classes"),
+        SCHOOL("school"),
+        STUDENTS("students"),
+        NAME("name"),
+        SCHOOLNAME("schoolname");
+
+        private final String key;
+
+        JSONKeys(String key) {
+            this.key = key;
+        }
+
+        public String key() {
+            return key;
+        }
+    }
+
 }

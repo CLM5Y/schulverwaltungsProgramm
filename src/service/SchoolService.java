@@ -92,7 +92,7 @@ public class SchoolService {
         int maxCapacityClass = Integer.parseInt(sc.nextLine());
         School school = new School(name, maxCapacityClass);
 
-        JSONConfig schoolConfig = new JSONConfig("school");
+        JSONConfig schoolConfig = new JSONConfig(JSONConfig.JSONKeys.SCHOOL.key());
         String schoolId = schoolConfig.getName();
 
         JSONObject newSchoolJSON = school.toJSON();

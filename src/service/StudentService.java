@@ -1,5 +1,6 @@
 package service;
 
+import model.JSONConfig;
 import model.Student;
 import model.Subject;
 import model.Teacher;
@@ -43,22 +44,22 @@ public class StudentService {
         }
 
         System.out.println("Erstelle Schüler...");
-        Sleep.sleep(1500);
+        Sleep.sleep(500);
         Student student = new Student(vorname, nachname, alter, subjects);
 
         System.out.println("Speichere nun den Schüler...");
         JSONObject school = data.getJSONObject(schoolKey);
 
-        JSONArray studentArray = school.optJSONArray("students");
+        JSONArray studentArray = school.optJSONArray(JSONConfig.JSONKeys.STUDENTS.key());
         if (studentArray == null) {
             studentArray = new JSONArray();
-            school.put("students", studentArray);
+            school.put(JSONConfig.JSONKeys.STUDENTS.key(), studentArray);
         }
         studentArray.put(student.toJSON());
         data.put(schoolKey, school);
         service.saveJSON();
 
-        Sleep.sleep(1500);
+        Sleep.sleep(500);
         System.out.println("Erfolgreich gespeichert!");
     }
 }

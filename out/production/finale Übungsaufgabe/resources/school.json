@@ -54,6 +54,10 @@
                 "roomsize": 40,
                 "roomnumber": "101",
                 "class": null
+            },
+            {
+                "roomnumber": 304,
+                "roomarea": 12
             }
         ],
         "maxclasscapacity": 20,

@@ -30,14 +30,14 @@ public class Menue {
             auswahl = Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Bitte eine Zahl eingeben.");
-            Sleep.sleep(2500);
+            Sleep.sleep(500);
             return;
         }
         switch (auswahl){
             case 1:{
                 // Hier Schule erstellen
                 System.out.println("Schule erstellen, Alles klar!");
-                Sleep.sleep(1500);
+                Sleep.sleep(500);
                 SchoolService.createSchool();
                 break;
             }
