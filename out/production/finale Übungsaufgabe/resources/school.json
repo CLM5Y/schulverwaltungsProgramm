@@ -3,7 +3,8 @@
         "rooms": [
             {
                 "roomnumber": 105,
-                "roomarea": 15
+                "roomarea": 15,
+                "class": "11D"
             },
             {
                 "roomnumber": 103,
@@ -113,5 +114,35 @@
         }],
         "maxclasscapacity": 2,
         "schoolname": "Test3"
+    },
+    "school4": {
+        "rooms": [{
+            "roomnumber": 203,
+            "roomarea": 23
+        }],
+        "teacher": [{
+            "subjets": [
+                "Subject{name='mathe'}",
+                "Subject{name='informatik'}"
+            ],
+            "name": "Michael",
+            "age": 52,
+            "lastname": "Wendler"
+        }],
+        "maxclasscapacity": 20,
+        "classes": [{
+            "studentcapacity": 20,
+            "name": "if11c"
+        }],
+        "students": [{
+            "favouritesubject": [
+                "Subject{name='Reli'}",
+                "Subject{name='Frei haben'}"
+            ],
+            "name": "Ioannis",
+            "age": 18,
+            "lastname": "P"
+        }],
+        "schoolname": "B3 Fürth"
     }
 }

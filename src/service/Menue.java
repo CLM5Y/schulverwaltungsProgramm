@@ -63,6 +63,7 @@ public class Menue {
             }
             case 6:{
                 // Hier Belegung eines Raumes mit einer Klasse#
+                ClassroomService.occupieTheRoom();
                 break;
             }
             case 7:{
