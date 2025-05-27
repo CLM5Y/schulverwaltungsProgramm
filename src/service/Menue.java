@@ -63,11 +63,12 @@ public class Menue {
             }
             case 6:{
                 // Hier Belegung eines Raumes mit einer Klasse#
-                ClassroomService.occupieTheRoom();
+                ClassroomService.occupiesTheRoom();
                 break;
             }
             case 7:{
                 // Hier Belegung eines Raumes aufheben
+                ClassroomService.unOccupiesTheRoom();
                 break;
             }
             case 8:{

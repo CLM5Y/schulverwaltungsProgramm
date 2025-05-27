@@ -3,8 +3,7 @@
         "rooms": [
             {
                 "roomnumber": 105,
-                "roomarea": 15,
-                "class": "11D"
+                "roomarea": 15
             },
             {
                 "roomnumber": 103,
@@ -48,13 +47,12 @@
         "rooms": [
             {
                 "roomsize": 35.5,
-                "roomnumber": "204",
+                "roomnumber": 204,
                 "class": "10A"
             },
             {
                 "roomsize": 40,
-                "roomnumber": "101",
-                "class": null
+                "roomnumber": 101
             },
             {
                 "roomnumber": 304,
@@ -144,5 +142,9 @@
             "lastname": "P"
         }],
         "schoolname": "B3 Fürth"
+    },
+    "school5": {
+        "maxclasscapacity": 20,
+        "schoolname": "Test9"
     }
 }

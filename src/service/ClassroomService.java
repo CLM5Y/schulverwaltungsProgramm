@@ -5,8 +5,6 @@ import model.JSONConfig;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ClassroomService {
@@ -79,7 +77,7 @@ public class ClassroomService {
     }
 
     /// Funktion zum Belgen von Räumen...
-    public static void occupieTheRoom() {
+    public static void occupiesTheRoom() {
         JSONObject data = service.getJSONData();
         String schoolKey;
         String eingabe;
@@ -92,10 +90,17 @@ public class ClassroomService {
         JSONArray rooms = school.optJSONArray(JSONConfig.JSONKeys.ROOMS.key());
 
         System.out.println("Ich werde Ihnen nun die Zimmerliste ausgeben...");
-        for (int i = 0; i < rooms.length(); i++) {
-            JSONObject room = rooms.getJSONObject(i);
-            System.out.println(room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()));
+
+        if (rooms != null && !rooms.isEmpty()) {
+            for (int i = 0; i < rooms.length(); i++) {
+                JSONObject room = rooms.getJSONObject(i);
+                System.out.println(room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()));
+            }
+        } else {
+            System.out.println("Es sind keine Räume vorhanden.");
+            return;
         }
+
 
         System.out.println("Bitte geben Sie nun den Raum ein, welchen Sie belegen wollen!");
         eingabe = sc.nextLine();
@@ -151,9 +156,57 @@ public class ClassroomService {
         service.saveJSON();
     }
 
-    /// Funktion zum Löschen der Klasse aus einem Raum
-    public static void deleteRoomOccupied(JSONObject room) {
-        room.remove(JSONConfig.JSONKeys.CLASS.key());
+    public static void unOccupiesTheRoom() {
+        JSONObject data = service.getJSONData();
+        String schoolKey;
+        String eingabe;
+
+        System.out.println("Sie möchten also die Belegung eines Raums aufheben...");
+        schoolKey = SchoolService.showSchools();
+        JSONObject school = data.getJSONObject(schoolKey);
+        JSONArray rooms = school.optJSONArray(JSONConfig.JSONKeys.ROOMS.key());
+
+        if (rooms != null && !rooms.isEmpty()) {
+        System.out.println("Ich werde Ihnen nun die Zimmerliste der belegten Räume ausgeben...");
+        for (int i = 0; i < rooms.length(); i++) {
+            JSONObject room = rooms.getJSONObject(i);
+            if (room.has(JSONConfig.JSONKeys.CLASS.key()) && !room.isNull(JSONConfig.JSONKeys.CLASS.key())) {
+                System.out.println(
+                        room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " " +
+                                room.getString(JSONConfig.JSONKeys.CLASS.key())
+                );
+            }
+        }
+        }else{
+            System.out.println("Es sind noch keine Räume vorhanden.");
+            return;
+        }
+
+        System.out.println("Bitte geben Sie nun den Raum ein, welchen Sie die Belegung aufheben wollen...");
+        eingabe = sc.nextLine();
+
+        JSONObject selectedRoom = null;
+        for (int i = 0; i < rooms.length(); i++) {
+            JSONObject room = rooms.getJSONObject(i);
+            if (room.get(JSONConfig.JSONKeys.ROOMNUMBER.key()).toString().equals(eingabe)) {
+                selectedRoom = room;
+                break;
+            }
+        }
+
+        if (selectedRoom == null) {
+            System.out.println("Der Raum wurde nicht gefunden!");
+            return;
+        }
+
+        if (eingabe.equals(String.valueOf(selectedRoom.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key())))){
+            System.out.println("Die Belegung des Raums " + selectedRoom.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " wird aufgehoben...");
+            selectedRoom.remove(JSONConfig.JSONKeys.CLASS.key());
+            System.out.println("Raumbelegung erfolgreich aufgehoben!");
+            Sleep.sleep(1500);
+        }
+
+        service.saveJSON();
     }
 
 }

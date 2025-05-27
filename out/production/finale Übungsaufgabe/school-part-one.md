@@ -138,7 +138,7 @@ Zum Schluss wird dann auch der Schüler persistiert mit dem Verweis auf die Klas
 * Persistente Speicherung des Schülers mit Verweis auf die Klasse
 ## Stories
 
-### SCHOOL-08 - Raum belegen
+### SCHOOL-08 - Raum belegen -DONE
 Als Nutzer möchte ich die Möglichkeit haben einen Raum mit einer Klasse zu belegen.
 Der Raum ist dann gesperrt für andere Klassen.
 Dabei soll zuerst der Raum ausgewählt werden, der belegt werden soll. Hier wird dann überprüft ob der Raum noch frei ist.
@@ -151,7 +151,7 @@ Als Nächstes wähle ich dann die Klasse aus, die dem Raum zugewiesen werden sol
 * Auswahl der Klasse
 * Persistierung der Verbindung
 
-### SCHOOL-09 - Belegung aufheben
+### SCHOOL-09 - Belegung aufheben -DONE
 Als Nutzer möchte ich eine Raumbelegung auch wieder aufheben können.
 Dafür komme ich über den Menüpunkt "Belegung eines Raums aufheben".
 Für das Aufheben der Belegung muss ich lediglich die Raumnummer angeben.
