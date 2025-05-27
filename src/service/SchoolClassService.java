@@ -112,4 +112,43 @@ public class SchoolClassService {
         } while (true);
     }
 
+    public static void showAllClasses(){
+        JSONObject data = service.getJSONData();
+        String schoolKey = SchoolService.showSchools();
+        JSONObject school = data.getJSONObject(schoolKey);
+        JSONArray classes;
+        int lehrerAnzahl = 0;
+
+
+        System.out.println("Ich zeige Ihnen nun alle Klassen der Schule: " + school.getString(JSONConfig.JSONKeys.SCHOOLNAME.key()));
+        classes = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+
+        if (classes != null && !classes.isEmpty()) {
+            for (int j = 0; j < classes.length(); j++) {
+                JSONObject schoolclass = classes.getJSONObject(j);
+
+                if (schoolclass.has(JSONConfig.JSONKeys.TEACHER.key())) {
+                    Object lehrerObjekt = schoolclass.get(JSONConfig.JSONKeys.TEACHER.key());
+
+                    if (lehrerObjekt instanceof JSONArray) {
+                        lehrerAnzahl = ((JSONArray) lehrerObjekt).length();
+                    } else if (lehrerObjekt instanceof JSONObject) {
+                        lehrerAnzahl = 1;
+                    }
+                }
+
+                if (schoolclass.has(JSONConfig.JSONKeys.TEACHER.key()) && !schoolclass.isNull(JSONConfig.JSONKeys.TEACHER.key())) {
+                    System.out.println("Klasse: " + schoolclass.getString(JSONConfig.JSONKeys.NAME.key()) + " "
+                            + "Maximale Schüler: " + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()) + " " +
+                            "Lehreranzahl: " + lehrerAnzahl);
+                } else {
+                    System.out.println("Klasse: " + schoolclass.getString(JSONConfig.JSONKeys.NAME.key()) + " "
+                            + "Maximale Schüler: " + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()));
+                }
+            }
+        }
+        Sleep.sleep(1500);
+
+    }
+
 }

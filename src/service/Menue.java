@@ -78,6 +78,7 @@ public class Menue {
             }
             case 9:{
                 // Hier Alle Klasseninformationen anzeigen
+                SchoolClassService.showAllClasses();
                 break;
             }
             case 10:{
@@ -85,7 +86,7 @@ public class Menue {
                 break;
             }
             case 11:{
-                // Hier einen Schüler aus der Klasse entfernen
+                // Hier einen Lehrers aus der Klasse entfernen
                 break;
             }
             case 12:{
