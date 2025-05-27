@@ -94,7 +94,7 @@ public class ClassroomService {
         if (rooms != null && !rooms.isEmpty()) {
             for (int i = 0; i < rooms.length(); i++) {
                 JSONObject room = rooms.getJSONObject(i);
-                System.out.println(room.getInt("Zimmernummer: " + JSONConfig.JSONKeys.ROOMNUMBER.key()));
+                System.out.println("Zimmernummer: " + room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()));
             }
         } else {
             System.out.println("Es sind keine Räume vorhanden.");
@@ -229,19 +229,18 @@ public class ClassroomService {
                 if (room.has(JSONConfig.JSONKeys.CLASS.key()) && !room.isNull(JSONConfig.JSONKeys.CLASS.key())) {
                     System.out.println("Zimmernummer: " +
                             room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " " +
-                                     "Belegt von: " + room.getString(JSONConfig.JSONKeys.CLASS.key() + " " +
-                                         "Raumgröße: " +  room.getInt(JSONConfig.JSONKeys.ROOMAREA.key())) + "m²"
-                    );
+                            "Raumgröße: " + room.getFloat(JSONConfig.JSONKeys.ROOMAREA.key()) + "m²" + " " +
+                            "Belegt von: " + room.getString(JSONConfig.JSONKeys.CLASS.key()));
                 }else{
                     System.out.println("Zimmernummer: " + room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " "
-                    + "Größe: " + room.getInt(JSONConfig.JSONKeys.ROOMAREA.key()) + "m²"
+                    + "Größe: " + room.getFloat(JSONConfig.JSONKeys.ROOMAREA.key()) + "m²"
                     );
                 }
             }
         }else{
             System.out.println("Es sind noch keine Räume vorhanden.");
         }
-        Sleep.sleep(1500);
+        Sleep.sleep(2000);
     }
 
 }

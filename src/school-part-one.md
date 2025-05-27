@@ -162,7 +162,7 @@ Das Ergebnis ist, dass der Raum wieder belegt werden kann.
 * Eingabe der Raumnummer
 * Raum wieder frei für eine Belegung
 
-### SCHOOL-10 - Übersicht über Räume
+### SCHOOL-10 - Übersicht über Räume -DONE
 Als Nutzer möchte ich eine Übersicht über die Räume der Schule bekommen.
 Die Anzeige möchte ich über den Menüpunkt "Gesamte Raumbelegung ansehen" erhalten.
 Dabei soll mir angezeigt werden, welche Räume es gibt.

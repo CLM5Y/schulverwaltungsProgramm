@@ -3,7 +3,8 @@
         "rooms": [
             {
                 "roomnumber": 105,
-                "roomarea": 15
+                "roomarea": 15,
+                "class": "11D"
             },
             {
                 "roomnumber": 103,
