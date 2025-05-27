@@ -46,13 +46,13 @@
     "school0": {
         "rooms": [
             {
-                "roomsize": 35.5,
                 "roomnumber": 204,
+                "roomarea": 35.5,
                 "class": "10A"
             },
             {
-                "roomsize": 40,
-                "roomnumber": 101
+                "roomnumber": 101,
+                "roomarea": 40
             },
             {
                 "roomnumber": 304,

@@ -94,7 +94,7 @@ public class ClassroomService {
         if (rooms != null && !rooms.isEmpty()) {
             for (int i = 0; i < rooms.length(); i++) {
                 JSONObject room = rooms.getJSONObject(i);
-                System.out.println(room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()));
+                System.out.println(room.getInt("Zimmernummer: " + JSONConfig.JSONKeys.ROOMNUMBER.key()));
             }
         } else {
             System.out.println("Es sind keine Räume vorhanden.");
@@ -167,14 +167,18 @@ public class ClassroomService {
         JSONArray rooms = school.optJSONArray(JSONConfig.JSONKeys.ROOMS.key());
 
         if (rooms != null && !rooms.isEmpty()) {
-        System.out.println("Ich werde Ihnen nun die Zimmerliste der belegten Räume ausgeben...");
         for (int i = 0; i < rooms.length(); i++) {
             JSONObject room = rooms.getJSONObject(i);
             if (room.has(JSONConfig.JSONKeys.CLASS.key()) && !room.isNull(JSONConfig.JSONKeys.CLASS.key())) {
-                System.out.println(
+                System.out.println("Ich werde Ihnen nun die Zimmerliste der belegten Räume ausgeben...");
+                System.out.println("Raumnummer: " +
                         room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " " +
-                                room.getString(JSONConfig.JSONKeys.CLASS.key())
+                        "Belegt von: " + room.getString(JSONConfig.JSONKeys.CLASS.key())
                 );
+            }else{
+                System.out.println("Keine belegten Räume vorhanden.");
+                Sleep.sleep(500);
+                return;
             }
         }
         }else{
@@ -207,6 +211,37 @@ public class ClassroomService {
         }
 
         service.saveJSON();
+    }
+
+    public static void showAllRooms(){
+        JSONObject data = service.getJSONData();
+        String schoolKey;
+
+        System.out.println("Sie möchten also alle Räume sehen...");
+        schoolKey = SchoolService.showSchools();
+        JSONObject school = data.getJSONObject(schoolKey);
+        JSONArray rooms = school.optJSONArray(JSONConfig.JSONKeys.ROOMS.key());
+
+        if (rooms != null && !rooms.isEmpty()) {
+            System.out.println("Ich werde Ihnen nun die Zimmerliste der belegten Räume ausgeben...");
+            for (int i = 0; i < rooms.length(); i++) {
+                JSONObject room = rooms.getJSONObject(i);
+                if (room.has(JSONConfig.JSONKeys.CLASS.key()) && !room.isNull(JSONConfig.JSONKeys.CLASS.key())) {
+                    System.out.println("Zimmernummer: " +
+                            room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " " +
+                                     "Belegt von: " + room.getString(JSONConfig.JSONKeys.CLASS.key() + " " +
+                                         "Raumgröße: " +  room.getInt(JSONConfig.JSONKeys.ROOMAREA.key())) + "m²"
+                    );
+                }else{
+                    System.out.println("Zimmernummer: " + room.getInt(JSONConfig.JSONKeys.ROOMNUMBER.key()) + " "
+                    + "Größe: " + room.getInt(JSONConfig.JSONKeys.ROOMAREA.key()) + "m²"
+                    );
+                }
+            }
+        }else{
+            System.out.println("Es sind noch keine Räume vorhanden.");
+        }
+        Sleep.sleep(1500);
     }
 
 }

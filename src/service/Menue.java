@@ -73,6 +73,7 @@ public class Menue {
             }
             case 8:{
                 // Hier Gesamte Raumbelegung aufheben
+                ClassroomService.showAllRooms();
                 break;
             }
             case 9:{
