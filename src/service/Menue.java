@@ -9,7 +9,7 @@ public class Menue {
     public static void showMenue(){
         Scanner scanner = new Scanner(System.in);
         int auswahl;
-
+        System.out.println("--------------------------------------------------");
         System.out.println("Herzlich Willkommen zum Schulverwaltungsprogramm!");
         System.out.println("Es stehen folgende Möglichkeiten zur Auswahl:");
         System.out.println("""

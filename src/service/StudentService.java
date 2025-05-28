@@ -50,21 +50,36 @@ public class StudentService {
         System.out.println("Speichere nun den Schüler...");
         JSONObject school = data.getJSONObject(schoolKey);
 
-        JSONArray classesArray = school.optJSONArray("classes");
-        if (classesArray != null) {
-            for (int i = 0; i < classesArray.length(); i++) {
-                JSONObject klasse = classesArray.getJSONObject(i);
-                if (klasse.getString("name").equals(className)) {
-                    JSONArray studentsInClass = klasse.optJSONArray("students");
-                    if (studentsInClass == null) {
-                        studentsInClass = new JSONArray();
-                        klasse.put("students", studentsInClass);
-                    }
-                    studentsInClass.put(student.toJSON());
-                    break;
+        JSONArray classesArray = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+        if (classesArray == null) {
+            System.out.println("Keine Klassen in der Schule gefunden!");
+            return;
+        }
+
+        boolean studentAdded = false;
+        for (int i = 0; i < classesArray.length(); i++) {
+            JSONObject klasse = classesArray.getJSONObject(i);
+            if (klasse.getString(JSONConfig.JSONKeys.NAME.key()).equalsIgnoreCase(className)) {
+                JSONArray studentsArray = klasse.optJSONArray(JSONConfig.JSONKeys.STUDENTS.key());
+                if (studentsArray == null) {
+                    studentsArray = new JSONArray();
+                    klasse.put(JSONConfig.JSONKeys.STUDENTS.key(), studentsArray);
                 }
+                studentsArray.put(student.toJSON());
+                classesArray.put(i, klasse);
+                studentAdded = true;
+                break;
             }
         }
+
+        if (!studentAdded) {
+            System.out.println("Klasse '" + className + "' nicht gefunden.");
+            return;
+        }
+
+        school.put(JSONConfig.JSONKeys.CLASSES.key(), classesArray);
+        data.put(schoolKey, school);
+
         service.saveJSON();
 
         Sleep.sleep(500);

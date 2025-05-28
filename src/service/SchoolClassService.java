@@ -111,60 +111,49 @@ public class SchoolClassService {
             System.out.println("Klasse nicht gefunden. Bitte erneut versuchen.");
         } while (true);
     }
-
-    public static void showAllClasses(){
+    public static void showAllClasses() {
         JSONObject data = service.getJSONData();
         String schoolKey = SchoolService.showSchools();
         JSONObject school = data.getJSONObject(schoolKey);
-        JSONArray classes;
-        int lehrerAnzahl = 0;
-        int schülerAnzahl = 0;
 
         System.out.println("Ich zeige Ihnen nun alle Klassen der Schule: " + school.getString(JSONConfig.JSONKeys.SCHOOLNAME.key()));
-        classes = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
-        if(classes == null){
+
+        JSONArray classes = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+        if (classes == null || classes.length() == 0) {
             System.out.println("Keine Klassen gefunden.");
             Sleep.sleep(1000);
             return;
-
         }
 
-        if (classes != null && !classes.isEmpty()) {
-            for (int j = 0; j < classes.length(); j++) {
-                JSONObject schoolclass = classes.getJSONObject(j);
+        for (int i = 0; i < classes.length(); i++) {
+            JSONObject klasse = classes.getJSONObject(i);
 
-                if (schoolclass.has(JSONConfig.JSONKeys.TEACHER.key())) {
-                    Object lehrerObjekt = schoolclass.get(JSONConfig.JSONKeys.TEACHER.key());
-
-                    if (lehrerObjekt instanceof JSONArray) {
-                        lehrerAnzahl = ((JSONArray) lehrerObjekt).length();
-                    } else if (lehrerObjekt instanceof JSONObject) {
-                        lehrerAnzahl = 1;
-                    }
-                }
-                if (schoolclass.has(JSONConfig.JSONKeys.STUDENTS.key())) {
-                    Object schülerObjekt = schoolclass.get(JSONConfig.JSONKeys.STUDENTS.key());
-
-                    if (schülerObjekt instanceof JSONArray) {
-                        schülerAnzahl = ((JSONArray) schülerObjekt).length();
-                    } else if (schülerObjekt instanceof JSONObject) {
-                        schülerAnzahl = 1;
-                    }
-                }
-
-                if (schoolclass.has(JSONConfig.JSONKeys.TEACHER.key()) && !schoolclass.isNull(JSONConfig.JSONKeys.TEACHER.key())) {
-                    System.out.println("Klasse: " + schoolclass.getString(JSONConfig.JSONKeys.NAME.key()) + " "
-                            + "Maximale Schüler: " + schülerAnzahl + "/" + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()) + " " +
-                            "Lehreranzahl: " + lehrerAnzahl);
-                } else {
-                    System.out.println("Klasse: " + schoolclass.getString(JSONConfig.JSONKeys.NAME.key()) + " "
-                            + "Maximale Schüler: " + schülerAnzahl + "/" + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()));
-                }
+            int lehrerAnzahl = 0;
+            if (klasse.has(JSONConfig.JSONKeys.TEACHERS.key()) && !klasse.isNull(JSONConfig.JSONKeys.TEACHERS.key())) {
+                lehrerAnzahl = klasse.getJSONArray(JSONConfig.JSONKeys.TEACHERS.key()).length();
             }
-        }
-        Sleep.sleep(1500);
 
+            int schülerAnzahl = 0;
+            if (klasse.has(JSONConfig.JSONKeys.STUDENTS.key()) && !klasse.isNull(JSONConfig.JSONKeys.STUDENTS.key())) {
+                schülerAnzahl = klasse.getJSONArray(JSONConfig.JSONKeys.STUDENTS.key()).length();
+            }
+
+            String klassenName = klasse.getString(JSONConfig.JSONKeys.NAME.key());
+            int maxSchüler = klasse.optInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key(), 0);
+
+            System.out.print("Klasse: " + klassenName + " ");
+            System.out.print("Maximale Schüler: " + schülerAnzahl + "/" + maxSchüler + " ");
+
+            if (lehrerAnzahl > 0) {
+                System.out.print("Lehreranzahl: " + lehrerAnzahl);
+            }
+
+            System.out.println();
+        }
+
+        Sleep.sleep(1500);
     }
+
     public static void deleteClass(){
 
         System.out.println("Gut sie möchten also eine Klasse komplett löschen...");

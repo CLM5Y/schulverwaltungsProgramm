@@ -49,29 +49,38 @@ public class TeacherService {
         Teacher teacher = new Teacher(vorname, nachname, alter, subjects);
 
         System.out.println("Speichere nun den Lehrer...");
-
         JSONObject school = data.getJSONObject(schoolKey);
 
-        JSONArray classesArray = school.optJSONArray("classes");
-        if (classesArray != null) {
-            for (int i = 0; i < classesArray.length(); i++) {
-                JSONObject klasse = classesArray.getJSONObject(i);
-                if (klasse.getString("name").equals(className)) {
-                    JSONArray teacherArray = klasse.optJSONArray("teacher");
-                    if (teacherArray == null) {
-                        teacherArray = new JSONArray();
-                        klasse.put("teacher", teacherArray);
-                    }
-                    teacherArray.put(teacher.toJSON());
-                    break;
-                }
-            }
-        } else {
+        JSONArray classesArray = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+        if (classesArray == null) {
             System.out.println("Keine Klassen in der Schule gefunden!");
+            return;
         }
 
+        boolean teacherAdded = false;
+        for (int i = 0; i < classesArray.length(); i++) {
+            JSONObject klasse = classesArray.getJSONObject(i);
+            if (klasse.getString(JSONConfig.JSONKeys.NAME.key()).equalsIgnoreCase(className)) {
+                JSONArray teachersArray = klasse.optJSONArray(JSONConfig.JSONKeys.TEACHERS.key());
+                if (teachersArray == null) {
+                    teachersArray = new JSONArray();
+                    klasse.put(JSONConfig.JSONKeys.TEACHERS.key(), teachersArray);
+                }
+                teachersArray.put(teacher.toJSON());
+                classesArray.put(i, klasse);
+                teacherAdded = true;
+                break;
+            }
+        }
 
+        if (!teacherAdded) {
+            System.out.println("Klasse '" + className + "' nicht gefunden.");
+            return;
+        }
+
+        school.put(JSONConfig.JSONKeys.CLASSES.key(), classesArray);
         data.put(schoolKey, school);
+
         service.saveJSON();
 
         Sleep.sleep(500);
@@ -114,27 +123,26 @@ public class TeacherService {
             return;
         }
 
-        JSONArray teachers = selectedClass.optJSONArray(JSONConfig.JSONKeys.TEACHER.key());
+        JSONArray teachers = selectedClass.optJSONArray(JSONConfig.JSONKeys.TEACHERS.key());
         if (teachers == null || teachers.isEmpty()) {
             System.out.println("Keine Lehrer in dieser Klasse vorhanden.");
             return;
         }
-
-        System.out.println("Lehrer in der Klasse:");
-        for (int i = 0; i < teachers.length(); i++) {
+        for(int i = 0; i < teachers.length(); i++) {
             JSONObject teacher = teachers.getJSONObject(i);
-            System.out.println("Lehrer: " + teacher.getString(JSONConfig.JSONKeys.FIRSTNAME.key()) + " " + teacher.getString(JSONConfig.JSONKeys.LASTNAME.key()));
+            System.out.println("Teacher: " + teacher.getString(JSONConfig.JSONKeys.NAME.key()) + " " +
+                    teacher.getString(JSONConfig.JSONKeys.LASTNAME.key()));
         }
 
         System.out.println("Bitte geben Sie den Vornamen des Lehrers ein:");
-        String firstName = sc.nextLine().strip();
+        String firstName = sc.nextLine();
         System.out.println("Bitte geben Sie den Nachnamen des Lehrers ein:");
-        String lastName = sc.nextLine().strip();
+        String lastName = sc.nextLine();
 
         int indexToRemove = -1;
         for (int i = 0; i < teachers.length(); i++) {
             JSONObject teacher = teachers.getJSONObject(i);
-            if (teacher.getString(JSONConfig.JSONKeys.FIRSTNAME.key()).equalsIgnoreCase(firstName) &&
+            if (teacher.getString(JSONConfig.JSONKeys.NAME.key()).equalsIgnoreCase(firstName) &&
                     teacher.getString(JSONConfig.JSONKeys.LASTNAME.key()).equalsIgnoreCase(lastName)) {
                 indexToRemove = i;
                 break;
