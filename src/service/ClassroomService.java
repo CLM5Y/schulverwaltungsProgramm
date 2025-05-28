@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import java.util.Scanner;
 
 public class ClassroomService {
-    static JSONservice service = new JSONservice();
+    static JSONservice service = JSONservice.getInstance();
     static Scanner sc = new Scanner(System.in);
 
     /// Methode zum erstellen eines Klassenzimmers. Erwartet keinen Wert und besitzt keinen Rückgabewert.

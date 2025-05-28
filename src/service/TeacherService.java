@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 
 public class TeacherService {
-    static JSONservice service = new JSONservice();
+    static JSONservice service = JSONservice.getInstance();
     static Scanner sc = new Scanner(System.in);
 
 

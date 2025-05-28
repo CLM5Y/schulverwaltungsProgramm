@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /// Besitzt alle Funktionen zum Anlegen/Bearbeiten/Hinzufügen der Schule
 public class SchoolService {
-    static JSONservice service = new JSONservice();
+    static JSONservice service = JSONservice.getInstance();
     static Scanner sc = new Scanner(System.in);
 
     /// Findet eine Schule anhand ihres Namens aus der JSON Datei.

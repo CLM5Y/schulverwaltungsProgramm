@@ -14,7 +14,15 @@
     "classes": [
         {
             "studentcapacity": 20,
-            "teachers": [],
+            "teachers": [{
+                "subjects": [
+                    "testfach",
+                    "deutsch"
+                ],
+                "name": "peter ",
+                "age": 1337,
+                "lastname": "testtyp"
+            }],
             "name": "if11c",
             "students": [
                 {
@@ -38,18 +46,20 @@
             ]
         },
         {
-            "studentcapacity": 30,
+            "studentcapacity": 20,
             "teachers": [{
-                "subjects": [
-                    "Kunst",
-                    "Deutsch"
-                ],
-                "name": "peter",
+                "subjects": ["awp"],
+                "name": "hans",
                 "age": 30,
-                "lastname": "Dummman"
+                "lastname": "peter"
             }],
-            "name": "if12c",
-            "students": []
+            "name": "if15c",
+            "students": [{
+                "favouritesubject": ["awp"],
+                "name": "testmann",
+                "age": 17,
+                "lastname": "dieterson"
+            }]
         }
     ],
     "schoolname": "Die Schule"

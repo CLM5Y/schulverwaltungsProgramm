@@ -11,30 +11,69 @@
         }
     ],
     "maxclasscapacity": 10,
-    "classes": [{
-        "studentcapacity": 20,
-        "teachers": [],
-        "name": "if11c",
-        "students": [
-            {
-                "favouritesubject": [
-                    "awp",
-                    "info"
+    "classes": [
+        {
+            "studentcapacity": 20,
+            "teachers": [{
+                "subjects": [
+                    "testfach",
+                    "deutsch"
                 ],
-                "name": "patric",
-                "age": 27,
-                "lastname": "k"
-            },
-            {
+                "name": "peter ",
+                "age": 1337,
+                "lastname": "testtyp"
+            }],
+            "name": "if11c",
+            "students": [
+                {
+                    "favouritesubject": [
+                        "awp",
+                        "info"
+                    ],
+                    "name": "patric",
+                    "age": 27,
+                    "lastname": "k"
+                },
+                {
+                    "favouritesubject": [
+                        "awp",
+                        "informatik"
+                    ],
+                    "name": "finn",
+                    "age": 18,
+                    "lastname": "l"
+                }
+            ]
+        },
+        {
+            "studentcapacity": 20,
+            "teachers": [{
+                "subjects": ["awp"],
+                "name": "hans",
+                "age": 30,
+                "lastname": "peter"
+            }],
+            "name": "if15c",
+            "students": [{
+                "favouritesubject": ["awp"],
+                "name": "testmann",
+                "age": 17,
+                "lastname": "dieterson"
+            }]
+        },
+        {
+            "studentcapacity": 10,
+            "name": "120",
+            "students": [{
                 "favouritesubject": [
-                    "awp",
-                    "informatik"
+                    "foo",
+                    "awp"
                 ],
-                "name": "finn",
-                "age": 18,
-                "lastname": "l"
-            }
-        ]
-    }],
+                "name": "eddy",
+                "age": 12,
+                "lastname": "test"
+            }]
+        }
+    ],
     "schoolname": "Die Schule"
 }}

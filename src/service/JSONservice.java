@@ -1,6 +1,5 @@
 package service;
 
-
 import model.JSONConfig;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,13 +13,23 @@ import java.util.Iterator;
 import java.util.List;
 
 public class JSONservice {
+    private static JSONservice instance;
+
     private final String jsonFilePath;
     private JSONObject jsonData;
 
-    public JSONservice() {
+    private JSONservice() {
         this.jsonFilePath = JSONConfig.JSON_FILE_PATH;
         loadJSON();
         initSchoolCounter();
+    }
+
+    /// Singleton-Zugriffsmethode -AI Nach Zugriffsproblemen auf frisch gespeichertes JSON. Durch neue Instanzen!
+    public static JSONservice getInstance() {
+        if (instance == null) {
+            instance = new JSONservice();
+        }
+        return instance;
     }
 
     /// Lädt die JSON Datei intern und ermöglicht Zugriff mit weiterem Datenhandling
