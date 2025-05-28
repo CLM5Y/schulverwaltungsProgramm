@@ -95,6 +95,7 @@ public class Menue {
             }
             case 12:{
                 // Hier Klasse komplett löschen
+                SchoolClassService.deleteClass();
                 break;
             }
             case 13:{

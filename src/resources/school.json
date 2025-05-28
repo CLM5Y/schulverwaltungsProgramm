@@ -16,25 +16,7 @@
             }
         ],
         "maxclasscapacity": 30,
-        "classes": [{
-            "studentcapacity": 30,
-            "teachers": [],
-            "name": "11D",
-            "students": [
-                {
-                    "favouritesubject": ["Informatik"],
-                    "name": "Julia",
-                    "age": 16,
-                    "lastname": "Berg"
-                },
-                {
-                    "favouritesubject": ["Mathe"],
-                    "name": "Tim",
-                    "age": 17,
-                    "lastname": "Maier"
-                }
-            ]
-        }],
+        "classes": [],
         "schoolname": "test5"
     },
     "school3": {

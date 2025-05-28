@@ -165,5 +165,42 @@ public class SchoolClassService {
         Sleep.sleep(1500);
 
     }
+    public static void deleteClass(){
+
+        System.out.println("Gut sie möchten also eine Klasse komplett löschen...");
+        Sleep.sleep(500);
+
+        JSONObject data = service.getJSONData();
+        String schoolKey = SchoolService.showSchools();
+        JSONObject school = data.getJSONObject(schoolKey);
+        JSONArray classes = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+        String classNameToDelete = SchoolClassService.showClasses(schoolKey);
+
+
+        int indexToDelete = -1;
+        for (int i = 0; i < classes.length(); i++) {
+            JSONObject schoolClass = classes.getJSONObject(i);
+            if (schoolClass.getString(JSONConfig.JSONKeys.NAME.key()).equalsIgnoreCase(classNameToDelete)) {
+                indexToDelete = i;
+                break;
+            }
+        }
+
+        if (indexToDelete == -1) {
+            System.out.println("Klasse nicht gefunden.");
+            return;
+        }
+
+        System.out.println("Sind Sie sicher, dass Sie die Klasse '" + classNameToDelete + "' inklusive Lehrer und Schüler löschen möchten? (ja/nein)");
+        String confirmation = sc.nextLine();
+        if (!confirmation.equalsIgnoreCase("ja")) {
+            System.out.println("Löschvorgang abgebrochen.");
+            return;
+        }
+        classes.remove(indexToDelete);
+        System.out.println("Klasse erfolgreich gelöscht!");
+        service.saveJSON();
+
+    }
 
 }

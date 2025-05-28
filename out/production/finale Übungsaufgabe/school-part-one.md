@@ -222,7 +222,7 @@ Bei Verneinung wird der Vorgang abgebrochen.
   * Ja, Lehrer wird aus Klasse entfernt
   * Nein, Vorgang wird abgebrochen
 
-### SCHOOL-14 - Klasse komplett auflösen
+### SCHOOL-14 - Klasse komplett auflösen -DONE
 Als Nutzer möchte ich die Möglichkeit haben eine Klasse komplett zu entfernen.
 Dazu wähle ich den Menüpunkt "Klasse komplett löschen".
 Hier muss ich dann die Klasse auswählen, die ich löschen möchten.
