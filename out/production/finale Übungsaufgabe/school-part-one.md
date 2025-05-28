@@ -175,7 +175,7 @@ Bei belegten Räumen soll dann zusätzlich noch der Klassennamen angezeigt werde
 * Anzeige ob Raum frei oder belegt ist
   * Wenn belegt, dann Anzeige der Klasse die den Raum belegt
 
-### SCHOOL-11 - Übersicht über Klassen
+### SCHOOL-11 - Übersicht über Klassen DONE
 Als Nutzer möchte ich mir einen Überblick über die Klassen machen können.
 Die Anzeige erreiche ich über den Menüpunkt "Alle Klasseninformationen anzeigen"
 Die Anzeige besteht aus allen notwendigen Informationen, darunter zählen der Name der Klasse, sowie die Anzahl der Lehrer.

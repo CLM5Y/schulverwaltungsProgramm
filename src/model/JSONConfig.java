@@ -35,7 +35,9 @@ public class JSONConfig {
         CLASS("class"),
         ROOMNUMBER("roomnumber"),
         ROOMAREA("roomarea"),
-        STUDENTCAPACITY("studentcapacity");
+        STUDENTCAPACITY("studentcapacity"),
+        FIRSTNAME("firstname"),
+        LASTNAME("lastname");
 
         private final String key;
 

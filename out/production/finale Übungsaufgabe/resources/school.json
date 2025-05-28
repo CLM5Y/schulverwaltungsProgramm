@@ -22,7 +22,7 @@
             ],
             "name": "Finn",
             "age": 18,
-            "lastname": "Laskowski"
+            "lastname": "L"
         }],
         "maxclasscapacity": 30,
         "classes": [{
@@ -40,7 +40,7 @@
             ],
             "name": "patric",
             "age": 15,
-            "lastname": "klamm"
+            "lastname": "k"
         }],
         "schoolname": "Peter-Henlein-Realschule"
     },

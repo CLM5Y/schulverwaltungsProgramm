@@ -62,4 +62,84 @@ public class StudentService {
         Sleep.sleep(500);
         System.out.println("Erfolgreich gespeichert!");
     }
+
+    public static void removeStudentFromClass() {
+        JSONObject data = service.getJSONData();
+        String schoolKey = SchoolService.showSchools();
+
+        JSONObject school = data.getJSONObject(schoolKey);
+        JSONArray classes = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+
+        if (classes == null || classes.isEmpty()) {
+            System.out.println("Keine Klassen vorhanden.");
+            return;
+        }
+
+        System.out.println("Folgende Klassen stehen zur Auswahl:");
+        for (int i = 0; i < classes.length(); i++) {
+            JSONObject schoolClass = classes.getJSONObject(i);
+            System.out.println("Klasse: " + schoolClass.getString(JSONConfig.JSONKeys.NAME.key()));
+        }
+
+        System.out.println("Bitte geben Sie den Namen der Klasse ein:");
+        String classInput = sc.nextLine();
+
+        JSONObject selectedClass = null;
+        for (int i = 0; i < classes.length(); i++) {
+            JSONObject schoolClass = classes.getJSONObject(i);
+            if (schoolClass.getString(JSONConfig.JSONKeys.NAME.key()).equalsIgnoreCase(classInput)) {
+                selectedClass = schoolClass;
+                break;
+            }
+        }
+
+        if (selectedClass == null) {
+            System.out.println("Klasse nicht gefunden.");
+            return;
+        }
+
+        JSONArray students = selectedClass.optJSONArray(JSONConfig.JSONKeys.STUDENTS.key());
+        if (students == null || students.isEmpty()) {
+            System.out.println("Keine Schüler in dieser Klasse vorhanden.");
+            return;
+        }
+        for(int i = 0; i < students.length(); i++) {
+            JSONObject student = students.getJSONObject(i);
+            System.out.println("Student: " + student.getString(JSONConfig.JSONKeys.FIRSTNAME.key()) + " " +
+                    student.getString(JSONConfig.JSONKeys.LASTNAME.key()));
+        }
+
+        System.out.println("Bitte geben Sie den Vornamen des Schülers ein:");
+        String firstName = sc.nextLine();
+        System.out.println("Bitte geben Sie den Nachnamen des Schülers ein:");
+        String lastName = sc.nextLine();
+
+        int indexToRemove = -1;
+        for (int i = 0; i < students.length(); i++) {
+            JSONObject student = students.getJSONObject(i);
+            if (student.getString(JSONConfig.JSONKeys.FIRSTNAME.key()).equalsIgnoreCase(firstName) &&
+                    student.getString(JSONConfig.JSONKeys.LASTNAME.key()).equalsIgnoreCase(lastName)) {
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        if (indexToRemove == -1) {
+            System.out.println("Schüler nicht gefunden.");
+            return;
+        }
+
+        System.out.println("Möchten Sie " + firstName + " " + lastName + " wirklich aus der Klasse entfernen? (ja/nein)");
+        String confirmation = sc.nextLine();
+        if (confirmation.equalsIgnoreCase("ja")) {
+            students.remove(indexToRemove);
+            System.out.println("Schüler wurde entfernt.");
+        } else {
+            System.out.println("Vorgang abgebrochen.");
+        }
+
+        service.saveJSON();
+        Sleep.sleep(1500);
+    }
+
 }

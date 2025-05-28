@@ -22,7 +22,7 @@
             ],
             "name": "Finn",
             "age": 18,
-            "lastname": "Laskowski"
+            "lastname": "L"
         }],
         "maxclasscapacity": 30,
         "classes": [{
@@ -40,7 +40,7 @@
             ],
             "name": "patric",
             "age": 15,
-            "lastname": "klamm"
+            "lastname": "k"
         }],
         "schoolname": "Peter-Henlein-Realschule"
     },
@@ -74,26 +74,15 @@
                     "lastname": "Flanders"
                 },
                 "name": "10A",
-                "students": [
-                    {
-                        "firstname": "Lisa",
-                        "age": 7,
-                        "lastname": "Simpson",
-                        "favoritesubjects": [
-                            "Math",
-                            "Biology"
-                        ]
-                    },
-                    {
-                        "firstname": "Bart",
-                        "age": 9,
-                        "lastname": "Simpson",
-                        "favoritesubjects": [
-                            "None",
-                            "None"
-                        ]
-                    }
-                ]
+                "students": [{
+                    "firstname": "Lisa",
+                    "age": 7,
+                    "lastname": "Simpson",
+                    "favoritesubjects": [
+                        "Math",
+                        "Biology"
+                    ]
+                }]
             },
             {
                 "studentcapacity": 20,

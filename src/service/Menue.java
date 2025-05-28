@@ -2,6 +2,8 @@ package service;
 
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Menue {
     ///Diese Funktion ruft ein Menue für die Ausgabe auf.
     public static void showMenue(){
@@ -83,6 +85,7 @@ public class Menue {
             }
             case 10:{
                 // Hier einen Schüler aus der Klasse entfernen
+                StudentService.removeStudentFromClass();
                 break;
             }
             case 11:{
@@ -94,8 +97,8 @@ public class Menue {
                 break;
             }
             case 13:{
-                // Hier Anwendung löschen
-                break;
+                // Hier Anwendung beenden
+                System.exit(0);
             }
             default:{
                 System.out.println("Bitte gültige Auswahl treffen!");
