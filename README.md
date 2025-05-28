@@ -1,15 +1,16 @@
 Schulverwaltungsprogramm von CLM5Y
+Abgeschlossen am 28.05.2025
 
 ## Stories
 ### SCHOOL-01 - Nutzermenü aufbauen
 Als Nutzer möchte ich ein Nutzermenü erhalten. In diesem Nutzermenü sollen diverse Menüpunkt angezeigt werden.
 Nach jeder Aktion soll das Nutzermenü wieder angezeigt werden.
 Das Menü soll folgende Menüpunkte haben:
-* Schule erstellen (1) -DONE
-* Klassenzimmer erstellen (2) -DONE
-* Klasse erstellen (3) -DONE
-* Lehrer zu einer Klasse hinzufügen (4) -DONE
-* Schüler zu einer Klasse hinzufügen (5) -DONE
+* Schule erstellen (1) 
+* Klassenzimmer erstellen (2) 
+* Klasse erstellen (3) 
+* Lehrer zu einer Klasse hinzufügen (4) 
+* Schüler zu einer Klasse hinzufügen (5) 
 * Belegen eines Raums mit einer Klasse (6)
 * Belegung eines Raumes aufheben (7)
 * Gesamte Raumbelegung ausgeben (8)
