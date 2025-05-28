@@ -26,7 +26,7 @@ public class JSONConfig {
 
     public enum JSONKeys {
         ROOMS("rooms"),
-        TEACHER("teacher"),
+        TEACHER("teachers"),
         CLASSES("classes"),
         SCHOOL("school"),
         STUDENTS("students"),

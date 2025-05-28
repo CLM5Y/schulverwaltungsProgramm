@@ -118,10 +118,16 @@ public class SchoolClassService {
         JSONObject school = data.getJSONObject(schoolKey);
         JSONArray classes;
         int lehrerAnzahl = 0;
-
+        int schülerAnzahl = 0;
 
         System.out.println("Ich zeige Ihnen nun alle Klassen der Schule: " + school.getString(JSONConfig.JSONKeys.SCHOOLNAME.key()));
         classes = school.optJSONArray(JSONConfig.JSONKeys.CLASSES.key());
+        if(classes == null){
+            System.out.println("Keine Klassen gefunden.");
+            Sleep.sleep(1000);
+            return;
+
+        }
 
         if (classes != null && !classes.isEmpty()) {
             for (int j = 0; j < classes.length(); j++) {
@@ -136,14 +142,23 @@ public class SchoolClassService {
                         lehrerAnzahl = 1;
                     }
                 }
+                if (schoolclass.has(JSONConfig.JSONKeys.STUDENTS.key())) {
+                    Object schülerObjekt = schoolclass.get(JSONConfig.JSONKeys.STUDENTS.key());
+
+                    if (schülerObjekt instanceof JSONArray) {
+                        schülerAnzahl = ((JSONArray) schülerObjekt).length();
+                    } else if (schülerObjekt instanceof JSONObject) {
+                        schülerAnzahl = 1;
+                    }
+                }
 
                 if (schoolclass.has(JSONConfig.JSONKeys.TEACHER.key()) && !schoolclass.isNull(JSONConfig.JSONKeys.TEACHER.key())) {
                     System.out.println("Klasse: " + schoolclass.getString(JSONConfig.JSONKeys.NAME.key()) + " "
-                            + "Maximale Schüler: " + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()) + " " +
+                            + "Maximale Schüler: " + schülerAnzahl + "/" + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()) + " " +
                             "Lehreranzahl: " + lehrerAnzahl);
                 } else {
                     System.out.println("Klasse: " + schoolclass.getString(JSONConfig.JSONKeys.NAME.key()) + " "
-                            + "Maximale Schüler: " + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()));
+                            + "Maximale Schüler: " + schülerAnzahl + "/" + schoolclass.getInt(JSONConfig.JSONKeys.STUDENTCAPACITY.key()));
                 }
             }
         }

@@ -90,6 +90,7 @@ public class Menue {
             }
             case 11:{
                 // Hier einen Lehrers aus der Klasse entfernen
+                TeacherService.removeTeacherFromClass();
                 break;
             }
             case 12:{

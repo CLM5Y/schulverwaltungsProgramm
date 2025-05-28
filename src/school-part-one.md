@@ -186,7 +186,7 @@ Bei der Anzahl der Schüler soll hier die Anzahl im Vergleich zur maximalen Kapa
 * Alle notwendigen Informationen der Klasse werden angezeigt
   * Name, Anzahl der Lehrer sowie Anzahl der Schüler im Vergleich zur Kapazität
 
-### SCHOOL-12 - Entfernen eines Schülers aus einer Klasse
+### SCHOOL-12 - Entfernen eines Schülers aus einer Klasse -DONE
 Als Nutzer möchte ich Schüler aus einer Klasse entfernen können, sofern diese nicht mehr Teil der Klasse sind.
 Dabei wird das Entfernen über den Menüpunkt "Entfernen eines Schülers aus der Klasse" eingeleitet.
 Als Nächstes muss dann die Klasse ausgewählt werden, in der der Schüler ist.
@@ -204,7 +204,7 @@ Bei Verneinung wird der Vorgang abgebrochen.
   * Ja, Schüler wird aus Klasse entfernt
   * Nein, Vorgang wird abgebrochen
 
-### SCHOOL-13 - Entfernen eines Lehrers aus Klasse
+### SCHOOL-13 - Entfernen eines Lehrers aus Klasse -DONE
 Als Nutzer möchte ich Lehrer aus einer Klasse entfernen können, sofern diese nicht mehr Teil der Klasse sind.
 Dabei wird das Entfernen über den Menüpunkt "Entfernen eines Lehrer aus der Klasse" eingeleitet.
 Als Nächstes muss dann die Klasse ausgewählt werden, in der der Lehrer ist.

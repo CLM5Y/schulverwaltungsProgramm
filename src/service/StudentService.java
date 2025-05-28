@@ -50,13 +50,21 @@ public class StudentService {
         System.out.println("Speichere nun den Schüler...");
         JSONObject school = data.getJSONObject(schoolKey);
 
-        JSONArray studentArray = school.optJSONArray(JSONConfig.JSONKeys.STUDENTS.key());
-        if (studentArray == null) {
-            studentArray = new JSONArray();
-            school.put(JSONConfig.JSONKeys.STUDENTS.key(), studentArray);
+        JSONArray classesArray = school.optJSONArray("classes");
+        if (classesArray != null) {
+            for (int i = 0; i < classesArray.length(); i++) {
+                JSONObject klasse = classesArray.getJSONObject(i);
+                if (klasse.getString("name").equals(className)) {
+                    JSONArray studentsInClass = klasse.optJSONArray("students");
+                    if (studentsInClass == null) {
+                        studentsInClass = new JSONArray();
+                        klasse.put("students", studentsInClass);
+                    }
+                    studentsInClass.put(student.toJSON());
+                    break;
+                }
+            }
         }
-        studentArray.put(student.toJSON());
-        data.put(schoolKey, school);
         service.saveJSON();
 
         Sleep.sleep(500);
@@ -103,10 +111,11 @@ public class StudentService {
             System.out.println("Keine Schüler in dieser Klasse vorhanden.");
             return;
         }
-        for(int i = 0; i < students.length(); i++) {
+
+        System.out.println("Schüler in der Klasse:");
+        for (int i = 0; i < students.length(); i++) {
             JSONObject student = students.getJSONObject(i);
-            System.out.println("Student: " + student.getString(JSONConfig.JSONKeys.FIRSTNAME.key()) + " " +
-                    student.getString(JSONConfig.JSONKeys.LASTNAME.key()));
+            System.out.println("Student: " + student.getString(JSONConfig.JSONKeys.NAME.key()) + " " + student.getString(JSONConfig.JSONKeys.LASTNAME.key()));
         }
 
         System.out.println("Bitte geben Sie den Vornamen des Schülers ein:");
@@ -117,7 +126,7 @@ public class StudentService {
         int indexToRemove = -1;
         for (int i = 0; i < students.length(); i++) {
             JSONObject student = students.getJSONObject(i);
-            if (student.getString(JSONConfig.JSONKeys.FIRSTNAME.key()).equalsIgnoreCase(firstName) &&
+            if (student.getString(JSONConfig.JSONKeys.NAME.key()).equalsIgnoreCase(firstName) &&
                     student.getString(JSONConfig.JSONKeys.LASTNAME.key()).equalsIgnoreCase(lastName)) {
                 indexToRemove = i;
                 break;
@@ -141,5 +150,6 @@ public class StudentService {
         service.saveJSON();
         Sleep.sleep(1500);
     }
+
 
 }

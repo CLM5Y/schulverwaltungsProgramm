@@ -15,33 +15,30 @@
                 "roomarea": 35
             }
         ],
-        "teacher": [{
-            "subjets": [
-                "Subject{name='Mathe'}",
-                "Subject{name='Informatik'}"
-            ],
-            "name": "Finn",
-            "age": 18,
-            "lastname": "L"
-        }],
         "maxclasscapacity": 30,
         "classes": [{
             "studentcapacity": 30,
-            "name": "11D"
+            "teachers": [],
+            "name": "11D",
+            "students": [
+                {
+                    "favouritesubject": ["Informatik"],
+                    "name": "Julia",
+                    "age": 16,
+                    "lastname": "Berg"
+                },
+                {
+                    "favouritesubject": ["Mathe"],
+                    "name": "Tim",
+                    "age": 17,
+                    "lastname": "Maier"
+                }
+            ]
         }],
         "schoolname": "test5"
     },
     "school3": {
         "maxclasscapacity": 23,
-        "students": [{
-            "favouritesubject": [
-                "Subject{name='none'}",
-                "Subject{name='none'}"
-            ],
-            "name": "patric",
-            "age": 15,
-            "lastname": "k"
-        }],
         "schoolname": "Peter-Henlein-Realschule"
     },
     "school0": {
@@ -64,7 +61,7 @@
         "classes": [
             {
                 "studentcapacity": 30,
-                "teacher": {
+                "teachers": [{
                     "firstname": "Ned",
                     "teachingsubjects": [
                         "Math",
@@ -72,25 +69,79 @@
                     ],
                     "age": 40,
                     "lastname": "Flanders"
-                },
+                }],
                 "name": "10A",
-                "students": [{
-                    "firstname": "Lisa",
-                    "age": 7,
-                    "lastname": "Simpson",
-                    "favoritesubjects": [
-                        "Math",
-                        "Biology"
-                    ]
-                }]
+                "students": [
+                    {
+                        "favouritesubject": [
+                            "Math",
+                            "Biology"
+                        ],
+                        "name": "Lisa",
+                        "age": 7,
+                        "lastname": "Simpson"
+                    },
+                    {
+                        "favouritesubject": [
+                            "None",
+                            "None"
+                        ],
+                        "name": "Bart",
+                        "age": 9,
+                        "lastname": "Simpson"
+                    }
+                ]
             },
             {
                 "studentcapacity": 20,
-                "name": "11D"
+                "teachers": [{
+                    "firstname": "Milhouse",
+                    "teachingsubjects": ["English"],
+                    "age": 10,
+                    "lastname": "Van Houten"
+                }],
+                "name": "11D",
+                "students": [
+                    {
+                        "favouritesubject": ["mathe"],
+                        "name": "Dieter",
+                        "age": 12,
+                        "lastname": "W"
+                    },
+                    {
+                        "favouritesubject": ["Biologie"],
+                        "name": "Anna",
+                        "age": 13,
+                        "lastname": "Müller"
+                    }
+                ]
             },
             {
                 "studentcapacity": 30,
-                "name": "5B"
+                "teachers": [{
+                    "firstname": "Edna",
+                    "teachingsubjects": [
+                        "German",
+                        "History"
+                    ],
+                    "age": 45,
+                    "lastname": "Krabappel"
+                }],
+                "name": "5B",
+                "students": [
+                    {
+                        "favouritesubject": ["Sport"],
+                        "name": "Max",
+                        "age": 10,
+                        "lastname": "Mustermann"
+                    },
+                    {
+                        "favouritesubject": ["Deutsch"],
+                        "name": "Sophie",
+                        "age": 9,
+                        "lastname": "Test"
+                    }
+                ]
             }
         ],
         "schoolname": "Springfield Elementary School"
@@ -108,28 +159,33 @@
             "roomnumber": 203,
             "roomarea": 23
         }],
-        "teacher": [{
-            "subjets": [
-                "Subject{name='mathe'}",
-                "Subject{name='informatik'}"
-            ],
-            "name": "Michael",
-            "age": 52,
-            "lastname": "Wendler"
-        }],
         "maxclasscapacity": 20,
         "classes": [{
             "studentcapacity": 20,
-            "name": "if11c"
-        }],
-        "students": [{
-            "favouritesubject": [
-                "Subject{name='Reli'}",
-                "Subject{name='Frei haben'}"
-            ],
-            "name": "Ioannis",
-            "age": 18,
-            "lastname": "P"
+            "teachers": [{
+                "firstname": "Michael",
+                "teachingsubjects": [
+                    "Mathe",
+                    "Informatik"
+                ],
+                "age": 52,
+                "lastname": "Wendler"
+            }],
+            "name": "if11c",
+            "students": [
+                {
+                    "favouritesubject": ["Frei haben"],
+                    "name": "Lena",
+                    "age": 18,
+                    "lastname": "Meier"
+                },
+                {
+                    "favouritesubject": ["Reli"],
+                    "name": "Ioannis",
+                    "age": 18,
+                    "lastname": "P"
+                }
+            ]
         }],
         "schoolname": "B3 Fürth"
     },
